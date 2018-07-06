@@ -1,0 +1,25 @@
+version: '3'
+services:
+  iris:
+    image: irisdev1:ora11
+    sysctls:
+    - fs.mqueue.msgsize_max=20000
+    - fs.mqueue.queues_max=1000
+    - fs.mqueue.msg_max=1000
+
+    ulimits:
+        msgqueue:
+          soft: 4096000
+          hard: 4096000
+        nofile:
+          soft: 1024000
+          hard: 1024000
+    volumes:
+    - ./iris:/home/iris/workarea    
+    tty: true
+    links:
+    - redis
+  redis:
+    image: "redis:alpine"
+    ports:
+    - "8999:8999"
