@@ -2,20 +2,6 @@ FROM centos
 
 
 RUN useradd -ms /bin/bash -p tpstps iris
-RUN yum -y install openssh-server
-RUN mkdir /var/run/sshd
-RUN echo 'root:screencast' | chpasswd
-RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-
-# SSH login fix. Otherwise user is kicked off after login
-RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
-
-ENV NOTVISIBLE "in users profile"
-RUN echo "export VISIBLE=now" >> /etc/profile
-
-EXPOSE 22
-
-CMD ["/usr/sbin/sshd", "-D"]
 
 RUN yum -y install libaio.x86_64 doxygen libaio-devel.x86_64 unzip python-devel mlocate gcc gcc-c++ vim openssl-libs.x86_64 openssl-devel.x86_64 make gdb.x86_64
 
