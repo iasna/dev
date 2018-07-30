@@ -82,7 +82,7 @@ Local modules contains following features
 ### API Server
 API Server is a server running on a certain port and entertaining all kinds of request from client. This server communicates with the IRIS Core for the completion of the request and takes the corresponding response from IRIS Core. Here you can write controllers to change the request received from client before sending to IRIS Core similarly response received from IRIS Core can also be changed before sending reply back to client. Later sections will cover the details.
 
-![APIServer flow](images/apiserver.png)
+![APIServer flow](apiserver.png)
 
 #### Folder Structure 
 #### Installing APIServer
@@ -97,7 +97,7 @@ Running APIServer
 ### Transaction processing
 In IRIS transactions can be customized in C++ by writing a class and overriding few methods. A class then is compiled into a shared object which is loaded once and executed whenever this certain flavor of transaction is received. For doing this in javascript a generic transaction class is written in C++ customjs.cpp which is to be exectued whenever you want to write your transaction logic is javascript.  A Transaction processing server is created. customjs shared object executes and sends  a transaction to transaction processing server. It then executes that particular transaction js where all the business logic is written and sends the response to IRIS Core customjs. Similar flow is followed in case of response too. Later sections will cover the details.
 
-![Transaction flow](images/transaction.png)
+![Transaction flow](transaction.png)
 
 #### Folder Structure
 #### Installing Transaction Processing
