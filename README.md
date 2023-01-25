@@ -1,2 +1,2 @@
 # irisdev
-IRIS C++ development environment
+ C++ development environment
